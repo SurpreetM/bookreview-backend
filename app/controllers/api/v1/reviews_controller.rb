@@ -6,14 +6,14 @@ class Api::V1::ReviewsController < ApplicationController
     # Show controller action for books shows book details and associated reviews
     def index
         @reviews = @book.reviews
-        render json: ReviewSerializer.new(@reviews)
+        render json: @reviews
     end
 
     def create
         @review = @book.reviews.new(review_params)
         @book.include_in_average_rating(@review)
         @review.save
-        render json: BookSerializer.new(@book)
+        render json: @book
     end
 
     def destroy

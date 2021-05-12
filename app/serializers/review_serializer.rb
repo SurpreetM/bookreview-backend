@@ -1,4 +1,4 @@
-class ReviewSerializer
-  include FastJsonapi::ObjectSerializer
-  attributes :rating, :comments
+class ReviewSerializer < ActiveModel::Serializer
+  # include FastJsonapi::ObjectSerializer
+  attributes :rating, :comments, :book_id
 end

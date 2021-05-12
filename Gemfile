@@ -6,6 +6,7 @@ ruby '2.6.1'
 gem 'rack-cors'
 # To give access to serializer generator which allow us to extract out customization of the json data being rendered (e.g. including related objects etc.)
 gem 'fast_jsonapi'
+gem 'active_model_serializers'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
