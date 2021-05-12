@@ -1,16 +1,19 @@
 class Api::V1::ReviewsController < ApplicationController
     before_action :set_book
 
+    # Not sure if we need the index route for reviews. 
+    # Index controller action for books lists all books  
+    # Show controller action for books shows book details and associated reviews
     def index
         @reviews = @book.reviews
-        render json: @reviews
+        render json: ReviewSerializer.new(@reviews)
     end
 
     def create
         @review = @book.reviews.new(review_params)
         @book.include_in_average_rating(@review)
         @review.save
-        render json: @book
+        render json: BookSerializer.new(@book)
     end
 
     def destroy

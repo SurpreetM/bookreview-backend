@@ -2,7 +2,11 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.1'
+# Allow access to out API server from origins you can define or leave open
 gem 'rack-cors'
+# To give access to serializer generator which allow us to extract out customization of the json data being rendered (e.g. including related objects etc.)
+gem 'fast_jsonapi'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.3'
 # Use sqlite3 as the database for Active Record

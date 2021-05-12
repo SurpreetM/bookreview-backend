@@ -2,14 +2,14 @@ class Api::V1::BooksController < ApplicationController
 
     def index
         @books = Book.all
-        render json: @books
+        render json: BookSerializer.new(@books)
     end
 
     def create
         @book = Book.new(book_params)
         @book.average_rating = 0
         if @book.save
-            render json: @book
+            render json: BookSerializer.new(@book)
         else
             render json: {error: 'Error adding book'}
         end
@@ -17,7 +17,7 @@ class Api::V1::BooksController < ApplicationController
 
     def show
         @book = Book.find(params[:id])
-        render json: @book
+        render json: BookSerializer.new(@book)
     end
 
     
