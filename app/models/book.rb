@@ -3,12 +3,16 @@ class Book < ApplicationRecord
     validates :title, :author, :genre, presence: true
 
     def include_in_average_rating(review)
-        self.average_rating = (self.average_rating + review.rating) / (self.reviews.count + 1)
+        total_rating = self.average_rating * (self.reviews.count - 1)
+        self.average_rating = (total_rating + review.rating) / (self.reviews.count)
         self.save
     end 
 
     def exclude_from_average_rating(review)
-        self.average_rating = ((self.average_rating * self.reviews.count) - review.rating) / (self.reviews.count - 1)
+        
+        total_rating = self.average_rating * (self.reviews.count)
+        self.average_rating = (total_rating - review.rating) / (self.reviews.count - 1)
+        self.save
     end
 
     

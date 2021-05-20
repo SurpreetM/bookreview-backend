@@ -10,23 +10,29 @@ class Api::V1::ReviewsController < ApplicationController
     end
 
     def create
+       
         @review = @book.reviews.new(review_params)
-        @book.include_in_average_rating(@review)
-        @review.save
-        render json: @book
+        if @review.save
+            @book.include_in_average_rating(@review)
+            render json: @book
+        else
+            render json: {error: 'Error adding review'}
+        end 
     end
 
     def destroy
         @review = Review.find(params["id"])
-        @book = Book.find(@review.account_id)
+        @book = Book.find(@review.book_id)
         @book.exclude_from_average_rating(@review)
         @review.destroy
+        render json: @book
     end
 
     private
     
     def set_book
-        @book = Book.find(params[:book_id])
+      
+        @book = Book.find (params[:book_id])
     end
 
 
