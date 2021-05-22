@@ -9,10 +9,11 @@ class Api::V1::BooksController < ApplicationController
     
         @book = Book.new(book_params)
         @book.average_rating = 0
+        
         if @book.save
             render json: @book
         else
-            render json: {error: 'Error adding book'}
+            render json: {error: "All fields must be completed"}
         end
     end
 

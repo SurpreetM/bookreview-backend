@@ -1,6 +1,7 @@
 class Book < ApplicationRecord
     has_many :reviews
     validates :title, :author, :genre, presence: true
+    validates :title, uniqueness: true
 
     def include_in_average_rating(review)
         total_rating = self.average_rating * (self.reviews.count - 1)

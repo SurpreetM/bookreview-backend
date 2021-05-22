@@ -1,22 +1,16 @@
 class Api::V1::ReviewsController < ApplicationController
     before_action :set_book
 
-    # Not sure if we need the index route for reviews. 
-    # Index controller action for books lists all books  
-    # Show controller action for books shows book details and associated reviews
-    def index
-        @reviews = @book.reviews
-        render json: @reviews
-    end
-
     def create
-       
         @review = @book.reviews.new(review_params)
         if @review.save
             @book.include_in_average_rating(@review)
             render json: @book
-        else
-            render json: {error: 'Error adding review'}
+        elsif
+            @review.comments?
+            render json: {error: "Please check your rating is between 1 and 10"}
+        else 
+            render json: {error: "Please add you comments"}
         end 
     end
 
@@ -30,8 +24,7 @@ class Api::V1::ReviewsController < ApplicationController
 
     private
     
-    def set_book
-      
+    def set_book   
         @book = Book.find (params[:book_id])
     end
 
