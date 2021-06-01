@@ -10,10 +10,14 @@ class Book < ApplicationRecord
     end 
 
     def exclude_from_average_rating(review)
-        
-        total_rating = self.average_rating * (self.reviews.count)
-        self.average_rating = (total_rating - review.rating) / (self.reviews.count - 1)
-        self.save
+        # if self.review.count == 1
+        #     self.average_rating = 0 
+        #    self.save
+        #else 
+            total_rating = self.average_rating * (self.reviews.count)
+            self.average_rating = (total_rating - review.rating) / (self.reviews.count - 1)
+            self.save
+        #end 
     end
 
     
