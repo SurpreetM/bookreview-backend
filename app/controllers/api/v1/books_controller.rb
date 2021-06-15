@@ -13,7 +13,8 @@ class Api::V1::BooksController < ApplicationController
         if @book.save
             render json: @book
         else
-            render json: {error: "All fields must be completed"}
+            render json: {error: @book.errors.full_messages[0]}
+            #render json: {error: "All fields must be completed"}
         end
     end
 
