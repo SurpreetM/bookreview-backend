@@ -14,4 +14,16 @@ review_two = Review.create(rating: 10, comments: 'This book is full of mystery, 
 
 review_three = Review.create(rating: 4, comments: "If you aren't keen on today's commercialized version of Halloween, you won't enjoy the Harry Potter stories either", book_id: book_one.id)
 
-book_two = Book.create(title: "Sapiens: A Brief History of Humankind", author: 'Yuval Noah Harari', genre: 'Non-Fiction', average_rating: 0)
+book_two = Book.create(title: "Sapiens: A Brief History of Humankind", author: 'Yuval Noah Harari', genre: 'Non-Fiction', average_rating: 7)
+
+book_three = Book.create(title: "War and Peace", author: 'Leo Tolstoy', genre:  'Fiction', average_rating: 6)
+
+book_four = Book.create(title: "The Great Gatsby", author: 'F. Scott Fitzgerald', genre: 'Fiction', average_rating: 8)
+
+book_five = Book.create(title: "Great Expectations", author: 'Charles Dickens', genre: 'Fictional Autobiography', average_rating: 8)
+
+book_six = Book.create(title: "Pride and Prejudice", author: 'Jane Austen', genre: 'Romance', average_rating: 7)
+
+book_seven = Book.create(title: "The Diary of a Young Girl", author: 'Ann Frank', genre: 'Non-Fiction', average_rating: 10)
+
+book_eight = Book.create(title: "A Brief History of Time", author: 'Stephen Hawking', genre: 'Non-Fiction', average_rating: 9)
